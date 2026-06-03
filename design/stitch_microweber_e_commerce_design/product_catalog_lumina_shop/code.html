@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lumina Shop - Catalog</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#d0e1fb",
+                        "background": "#f7f9fb",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "tertiary-fixed": "#ffdbcb",
+                        "primary-container": "#1e3a8a",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "tertiary-container": "#6e2c00",
+                        "on-tertiary-container": "#f39461",
+                        "outline": "#757682",
+                        "on-primary-container": "#90a8ff",
+                        "surface-dim": "#d8dadc",
+                        "on-tertiary-fixed-variant": "#773205",
+                        "tertiary-fixed-dim": "#ffb691",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "surface-variant": "#e0e3e5",
+                        "secondary-fixed": "#d3e4fe",
+                        "primary-fixed": "#dce1ff",
+                        "secondary": "#505f76",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container-high": "#e6e8ea",
+                        "outline-variant": "#c5c5d3",
+                        "on-surface": "#191c1e",
+                        "surface-container": "#eceef0",
+                        "surface-tint": "#4059aa",
+                        "on-background": "#191c1e",
+                        "surface": "#f7f9fb",
+                        "inverse-surface": "#2d3133",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#f7f9fb",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#0b1c30",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-secondary-container": "#54647a",
+                        "inverse-primary": "#b6c4ff",
+                        "primary": "#00236f",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#00164e",
+                        "tertiary": "#4b1c00",
+                        "on-surface-variant": "#444651",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#341100",
+                        "on-primary-fixed-variant": "#264191"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "80px",
+                        "sm": "16px",
+                        "margin-desktop": "40px",
+                        "base": "4px",
+                        "md": "24px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "xs": "8px",
+                        "lg": "48px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.25", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .product-card:hover .quick-action-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-md shadow-md">
+<div class="flex justify-between items-center max-w-[1280px] mx-auto px-margin-desktop py-4">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">
+                Lumina Shop
+            </div>
+<div class="hidden md:flex items-center gap-gutter">
+<a class="font-label-md text-label-md text-primary dark:text-primary-fixed border-b-2 border-primary dark:border-primary-fixed pb-1 hover:text-primary transition-colors duration-200" href="#">Shop All</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant pb-1 hover:text-primary transition-colors duration-200" href="#">New Arrivals</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant pb-1 hover:text-primary transition-colors duration-200" href="#">Best Sellers</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant pb-1 hover:text-primary transition-colors duration-200" href="#">Categories</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant pb-1 hover:text-primary transition-colors duration-200" href="#">Sale</a>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-2 hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface">search</span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-full transition-colors relative">
+<span class="material-symbols-outlined text-on-surface" data-icon="shopping_cart">shopping_cart</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface" data-icon="person">person</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-[100px] max-w-[1280px] mx-auto px-margin-desktop">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-xs py-sm text-on-surface-variant mb-base">
+<a class="font-label-md text-label-md hover:text-primary" href="#">Home</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<a class="font-label-md text-label-md hover:text-primary" href="#">Shop</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">All Products</span>
+</nav>
+<div class="flex flex-col md:flex-row gap-xl">
+<!-- Sidebar Filters -->
+<aside class="w-full md:w-64 shrink-0 space-y-lg">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-md text-headline-md text-on-surface">Filters</h2>
+<button class="text-primary font-label-sm text-label-sm hover:underline">Clear All</button>
+</div>
+<!-- Category -->
+<div class="space-y-sm">
+<h3 class="font-label-md text-label-md uppercase tracking-wider text-outline">Category</h3>
+<div class="space-y-xs">
+<label class="flex items-center gap-xs cursor-pointer group">
+<input checked="" class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-md text-body-md group-hover:text-primary transition-colors">Lifestyle</span>
+</label>
+<label class="flex items-center gap-xs cursor-pointer group">
+<input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-md text-body-md group-hover:text-primary transition-colors">Performance</span>
+</label>
+<label class="flex items-center gap-xs cursor-pointer group">
+<input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-md text-body-md group-hover:text-primary transition-colors">Accessories</span>
+</label>
+<label class="flex items-center gap-xs cursor-pointer group">
+<input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-md text-body-md group-hover:text-primary transition-colors">Limited Edition</span>
+</label>
+</div>
+</div>
+<!-- Price Range -->
+<div class="space-y-sm">
+<h3 class="font-label-md text-label-md uppercase tracking-wider text-outline">Price Range</h3>
+<div class="px-2">
+<input class="w-full h-1 bg-surface-container-high rounded-lg appearance-none cursor-pointer accent-primary" max="1000" min="0" type="range"/>
+<div class="flex justify-between mt-sm text-on-surface-variant font-label-sm text-label-sm">
+<span>$0</span>
+<span>$1000+</span>
+</div>
+</div>
+</div>
+<!-- Size -->
+<div class="space-y-sm">
+<h3 class="font-label-md text-label-md uppercase tracking-wider text-outline">Size</h3>
+<div class="grid grid-cols-4 gap-xs">
+<button class="aspect-square flex items-center justify-center border border-outline-variant rounded-lg font-label-md text-label-md hover:border-primary hover:text-primary transition-all">XS</button>
+<button class="aspect-square flex items-center justify-center border-2 border-primary bg-primary-fixed text-on-primary-fixed font-label-md text-label-md">S</button>
+<button class="aspect-square flex items-center justify-center border border-outline-variant rounded-lg font-label-md text-label-md hover:border-primary hover:text-primary transition-all">M</button>
+<button class="aspect-square flex items-center justify-center border border-outline-variant rounded-lg font-label-md text-label-md hover:border-primary hover:text-primary transition-all">L</button>
+<button class="aspect-square flex items-center justify-center border border-outline-variant rounded-lg font-label-md text-label-md hover:border-primary hover:text-primary transition-all">XL</button>
+</div>
+</div>
+<!-- Color -->
+<div class="space-y-sm">
+<h3 class="font-label-md text-label-md uppercase tracking-wider text-outline">Color</h3>
+<div class="flex flex-wrap gap-sm">
+<button class="w-6 h-6 rounded-full bg-[#1e3a8a] ring-2 ring-offset-2 ring-primary"></button>
+<button class="w-6 h-6 rounded-full bg-[#111827] ring-1 ring-outline-variant hover:ring-2 hover:ring-offset-2 hover:ring-outline"></button>
+<button class="w-6 h-6 rounded-full bg-[#ffffff] ring-1 ring-outline-variant hover:ring-2 hover:ring-offset-2 hover:ring-outline"></button>
+<button class="w-6 h-6 rounded-full bg-[#ef4444] ring-1 ring-outline-variant hover:ring-2 hover:ring-offset-2 hover:ring-outline"></button>
+<button class="w-6 h-6 rounded-full bg-[#10b981] ring-1 ring-outline-variant hover:ring-2 hover:ring-offset-2 hover:ring-outline"></button>
+</div>
+</div>
+</aside>
+<!-- Product Grid -->
+<section class="flex-1">
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-lg gap-sm">
+<div>
+<h1 class="font-display text-display text-on-surface">New Arrivals</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-base">Showing 48 items</p>
+</div>
+<div class="flex items-center gap-sm">
+<span class="font-label-md text-label-md text-on-surface-variant">Sort by:</span>
+<select class="bg-transparent border-none font-label-md text-label-md text-on-surface focus:ring-0 cursor-pointer">
+<option>Latest</option>
+<option>Price: Low to High</option>
+<option>Price: High to Low</option>
+<option>Popularity</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Product Card 1 -->
+<div class="product-card group bg-surface-container-lowest rounded-xl border border-outline-variant/30 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+<div class="relative aspect-[4/5] overflow-hidden bg-surface-container-low">
+<img alt="Lumina Runner Pro" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A professional studio shot of a high-performance athletic sneaker in vibrant navy blue and sleek white. The shoe is positioned dynamically against a clean, soft grey background with subtle ambient lighting. The material textures of the mesh and high-grade rubber are clearly visible, conveying a premium quality and modern aesthetic. The lighting is bright and crisp, highlighting the shoe's contoured design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv5XuwdUbYRzA2Bx4oaDnNTrD_85ZZkBvj233B7Cs4IkaNFn14UHt_gjV7lonbBFRQ9gg70ff0KJI_ziNo3NqouWLsR7Wlp5_wAX43tEgHAO65XrZOsdi-WMjx39Do2mqLF7Hi_5A7Qn8ufZ-Kss9JY8qoLp4kIeVELzRakaf2-fmjUrWYoeRLKbFfWAn9joZ7-ICcLuaGusNdSPnor8huYLkTPuhh3MyIW7E73AJfPabKmbR93KCpejkO1MWURajmfZbUR-mfhQ1P"/>
+<div class="absolute top-4 left-4">
+<span class="bg-primary/10 text-primary font-label-sm text-label-sm px-3 py-1 rounded-full backdrop-blur-sm">New</span>
+</div>
+<div class="quick-action-overlay absolute inset-0 flex items-end justify-center p-md bg-gradient-to-t from-on-surface/40 to-transparent opacity-0 transform translate-y-4 transition-all duration-300">
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-label-md text-label-md flex items-center justify-center gap-xs hover:bg-primary-container transition-colors shadow-lg">
+<span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+                                    Add to Cart
+                                </button>
+</div>
+</div>
+<div class="p-md space-y-xs">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Performance</p>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Lumina Runner Pro</h3>
+</div>
+<span class="font-headline-md text-headline-md text-primary">$180.00</span>
+</div>
+<div class="flex items-center gap-base">
+<div class="flex text-tertiary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">star</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">(124)</span>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="product-card group bg-surface-container-lowest rounded-xl border border-outline-variant/30 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+<div class="relative aspect-[4/5] overflow-hidden bg-surface-container-low">
+<img alt="Lumina Core Watch" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A minimalist, high-end white digital watch displayed on a textured charcoal surface. The design is sleek with a matte finish and a clear, elegant display. Soft directional lighting from the side creates deep, artistic shadows that emphasize the watch's geometric form. The overall atmosphere is sophisticated, modern, and high-fashion, appealing to a luxury minimalist lifestyle." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXp-8IFSqMhjLfs27QBPhsaaQmFUVhTe5UZW8DfglWopZZWBJMx63Ka24hc_h13f8RKXKdoH2RU6rwUrektFaZhCxeO9sc8o4p2Zgo6q9mm1mYSgKa0DPEA9RVHxFbjiy3wUlxZUpnYtFd-8V66qujJHg6JUkvRs3xi-EWQF79J0hKP3rTMYgwvdpiypV86cazFJaXJ7AzvptmLgg_ABAWarjs3LZEKYPEF_8B-YmZqQ4IxaPDcGVF4uwHwYZDksOoEOiIEDlgXEE1"/>
+<div class="quick-action-overlay absolute inset-0 flex items-end justify-center p-md bg-gradient-to-t from-on-surface/40 to-transparent opacity-0 transform translate-y-4 transition-all duration-300">
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-label-md text-label-md flex items-center justify-center gap-xs hover:bg-primary-container transition-colors shadow-lg">
+<span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+                                    Add to Cart
+                                </button>
+</div>
+</div>
+<div class="p-md space-y-xs">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Lifestyle</p>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Core Watch v2</h3>
+</div>
+<span class="font-headline-md text-headline-md text-primary">$320.00</span>
+</div>
+<div class="flex items-center gap-base">
+<div class="flex text-tertiary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">(89)</span>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="product-card group bg-surface-container-lowest rounded-xl border border-outline-variant/30 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+<div class="relative aspect-[4/5] overflow-hidden bg-surface-container-low">
+<img alt="Lumina Audio One" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Premium wireless over-ear headphones in a sophisticated matte black finish. The headphones are resting elegantly on a minimalist wooden desk surface next to a clean white laptop. Warm, natural window light filters across the scene, highlighting the soft leather ear cushions and brushed metal accents. The shot is captured with a shallow depth of field, focusing on the refined texture of the product." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsNTHYpFliBEuMJYXSKqB8QK-TP8Y6CJdzpE_2-bhJfdRdI1gKOlTB7hveDydnsHMcAyZRzhj9nF-qn8b6XtiApEu2xn-whrwDsp5p0-E_jOM9XvrkfVZnxkdynr3SjjDGTVoT8EMdX5jy4W8Y6qZqOYWIqUTcLQnBpj27OqLqyVCENd0VUnzWANIh--wd5SnFf0D9zFW6n5xihuvorgXt4tHCLjxFK40kMsi0YrgOT_cauVoUwJL3bDS2O9H5ma00ZLhWDTFZJcEN"/>
+<div class="absolute top-4 left-4">
+<span class="bg-error/10 text-error font-label-sm text-label-sm px-3 py-1 rounded-full backdrop-blur-sm">-20%</span>
+</div>
+<div class="quick-action-overlay absolute inset-0 flex items-end justify-center p-md bg-gradient-to-t from-on-surface/40 to-transparent opacity-0 transform translate-y-4 transition-all duration-300">
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-label-md text-label-md flex items-center justify-center gap-xs hover:bg-primary-container transition-colors shadow-lg">
+<span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+                                    Add to Cart
+                                </button>
+</div>
+</div>
+<div class="p-md space-y-xs">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Audio</p>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Audio One Wireless</h3>
+</div>
+<div class="text-right">
+<span class="font-headline-md text-headline-md text-primary block">$299.00</span>
+<span class="font-label-sm text-label-sm text-outline line-through">$375.00</span>
+</div>
+</div>
+<div class="flex items-center gap-base">
+<div class="flex text-tertiary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0.5;">star_half</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">(256)</span>
+</div>
+</div>
+</div>
+<!-- Additional Rows Simulated -->
+<div class="col-span-full py-lg flex justify-center">
+<button class="px-lg py-4 border-2 border-primary text-primary font-label-md text-label-md rounded-lg hover:bg-primary hover:text-on-primary transition-all duration-300">
+                            Load More Products
+                        </button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-xl bg-surface-container-lowest dark:bg-inverse-surface">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-[1280px] mx-auto px-margin-desktop py-xl">
+<div class="space-y-md">
+<div class="font-headline-lg text-headline-lg font-black text-primary dark:text-primary-fixed">
+                    Lumina Shop
+                </div>
+<p class="font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim">
+                    Redefining the modern shopping experience with precision, clarity, and quality essentials.
+                </p>
+</div>
+<div class="space-y-sm">
+<h4 class="font-label-md text-label-md font-bold text-on-surface dark:text-inverse-on-surface uppercase tracking-widest">Customer Service</h4>
+<ul class="space-y-xs">
+<li><a class="font-label-sm text-label-sm text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors" href="#">About Us</a></li>
+<li><a class="font-label-sm text-label-sm text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors" href="#">Contact</a></li>
+<li><a class="font-label-sm text-label-sm text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors" href="#">Shipping Policy</a></li>
+</ul>
+</div>
+<div class="space-y-sm">
+<h4 class="font-label-md text-label-md font-bold text-on-surface dark:text-inverse-on-surface uppercase tracking-widest">Legal</h4>
+<ul class="space-y-xs">
+<li><a class="font-label-sm text-label-sm text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors" href="#">Returns</a></li>
+<li><a class="font-label-sm text-label-sm text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="font-label-sm text-label-sm text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div class="space-y-sm">
+<h4 class="font-label-md text-label-md font-bold text-on-surface dark:text-inverse-on-surface uppercase tracking-widest">Newsletter</h4>
+<p class="font-label-sm text-label-sm text-secondary">Join for exclusive early access and sales.</p>
+<div class="flex gap-2">
+<input class="flex-1 bg-surface-container rounded-lg border-none focus:ring-primary font-body-md" placeholder="Email address" type="email"/>
+<button class="bg-primary text-on-primary p-2 rounded-lg">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="max-w-[1280px] mx-auto px-margin-desktop py-md border-t border-outline-variant/20 text-center">
+<p class="font-label-sm text-label-sm text-secondary dark:text-secondary-fixed-dim">
+                © 2024 Lumina Shop. Powered by Microweber CMS.
+            </p>
+</div>
+</footer>
+<script>
+        // Micro-interactions for the range slider
+        const range = document.querySelector('input[type="range"]');
+        if (range) {
+            range.addEventListener('input', (e) => {
+                const val = e.target.value;
+                const max = e.target.max;
+                const percentage = (val / max) * 100;
+                e.target.style.background = `linear-gradient(to right, #1e3a8a 0%, #1e3a8a ${percentage}%, #eceef0 ${percentage}%, #eceef0 100%)`;
+            });
+        }
+
+        // Toggle mobile filters if needed (simple implementation)
+        const toggleFilters = () => {
+            const sidebar = document.querySelector('aside');
+            sidebar.classList.toggle('hidden');
+        };
+    </script>
+</body></html>

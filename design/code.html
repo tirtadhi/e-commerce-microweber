@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Your Shopping Cart | Lumina Shop</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "tertiary-container": "#6e2c00",
+                  "surface": "#f7f9fb",
+                  "primary-fixed-dim": "#b6c4ff",
+                  "on-surface-variant": "#444651",
+                  "on-surface": "#191c1e",
+                  "on-tertiary-container": "#f39461",
+                  "primary-fixed": "#dce1ff",
+                  "outline-variant": "#c5c5d3",
+                  "on-secondary": "#ffffff",
+                  "primary-container": "#1e3a8a",
+                  "on-secondary-fixed-variant": "#38485d",
+                  "surface-bright": "#f7f9fb",
+                  "secondary-fixed": "#d3e4fe",
+                  "error": "#ba1a1a",
+                  "on-primary-fixed": "#00164e",
+                  "on-tertiary-fixed": "#341100",
+                  "surface-container": "#eceef0",
+                  "secondary": "#505f76",
+                  "on-secondary-container": "#54647a",
+                  "outline": "#757682",
+                  "surface-container-lowest": "#ffffff",
+                  "on-error": "#ffffff",
+                  "error-container": "#ffdad6",
+                  "on-primary-fixed-variant": "#264191",
+                  "tertiary-fixed-dim": "#ffb691",
+                  "on-secondary-fixed": "#0b1c30",
+                  "surface-container-high": "#e6e8ea",
+                  "surface-variant": "#e0e3e5",
+                  "on-primary": "#ffffff",
+                  "inverse-surface": "#2d3133",
+                  "on-tertiary": "#ffffff",
+                  "on-tertiary-fixed-variant": "#773205",
+                  "on-primary-container": "#90a8ff",
+                  "background": "#f7f9fb",
+                  "surface-container-low": "#f2f4f6",
+                  "on-background": "#191c1e",
+                  "inverse-primary": "#b6c4ff",
+                  "tertiary": "#4b1c00",
+                  "on-error-container": "#93000a",
+                  "secondary-fixed-dim": "#b7c8e1",
+                  "primary": "#00236f",
+                  "surface-tint": "#4059aa",
+                  "secondary-container": "#d0e1fb",
+                  "surface-dim": "#d8dadc",
+                  "inverse-on-surface": "#eff1f3",
+                  "tertiary-fixed": "#ffdbcb",
+                  "surface-container-highest": "#e0e3e5"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "margin-mobile": "16px",
+                  "md": "24px",
+                  "lg": "48px",
+                  "xl": "80px",
+                  "gutter": "24px",
+                  "xs": "8px",
+                  "margin-desktop": "40px",
+                  "base": "4px",
+                  "sm": "16px"
+          },
+          "fontFamily": {
+                  "label-sm": ["Inter"],
+                  "body-md": ["Inter"],
+                  "display": ["Inter"],
+                  "body-lg": ["Inter"],
+                  "headline-lg-mobile": ["Inter"],
+                  "label-md": ["Inter"],
+                  "headline-md": ["Inter"],
+                  "headline-lg": ["Inter"]
+          },
+          "fontSize": {
+                  "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                  "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                  "display": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                  "headline-lg-mobile": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                  "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                  "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                  "headline-lg": ["32px", {"lineHeight": "1.25", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #dce1ff; border-radius: 10px; }
+  </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar Section -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-md shadow-md">
+<div class="flex justify-between items-center max-w-[1280px] mx-auto px-margin-desktop py-4">
+<a class="font-headline-md text-headline-md font-bold text-primary" href="#">Lumina Shop</a>
+<!-- Desktop Navigation -->
+<nav class="hidden md:flex space-x-md items-center">
+<a class="font-label-md text-label-md text-on-surface-variant pb-1 hover:text-primary transition-colors duration-200" href="#">Shop All</a>
+<a class="font-label-md text-label-md text-on-surface-variant pb-1 hover:text-primary transition-colors duration-200" href="#">New Arrivals</a>
+<a class="font-label-md text-label-md text-on-surface-variant pb-1 hover:text-primary transition-colors duration-200" href="#">Best Sellers</a>
+<a class="font-label-md text-label-md text-on-surface-variant pb-1 hover:text-primary transition-colors duration-200" href="#">Categories</a>
+<a class="font-label-md text-label-md text-on-surface-variant pb-1 hover:text-primary transition-colors duration-200" href="#">Sale</a>
+</nav>
+<div class="flex items-center space-x-sm">
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="person">person</span>
+</button>
+<button class="p-2 rounded-full bg-primary-container text-on-primary-container relative">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span class="absolute -top-1 -right-1 bg-error text-on-error text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold">2</span>
+</button>
+</div>
+</div>
+</header>
+<main class="max-w-[1280px] mx-auto px-margin-desktop pt-[120px] pb-xl min-h-screen">
+<!-- Page Header -->
+<div class="mb-lg">
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Shopping Cart</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">Review your items and proceed to secure checkout.</p>
+</div>
+<!-- Layout Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xl">
+<!-- Cart Items List (8 Columns) -->
+<div class="lg:col-span-8 space-y-md">
+<!-- Cart Item 1 -->
+<div class="group flex flex-col sm:flex-row bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-sm shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+<div class="w-full sm:w-40 h-40 bg-surface-container rounded-lg overflow-hidden flex-shrink-0 relative border-[0.5px] border-outline-variant/20">
+<img alt="Performance Runner" class="w-full h-full object-cover" data-alt="A professional product shot of a vibrant red performance running shoe. The lighting is high-key and soft, highlighting the sleek textures and technical mesh. The shoe is positioned dynamically against a clean, minimalist off-white background, embodying the premium and effortless Lumina aesthetic with crisp clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4mPiHkhRq5eQvhe6dNxdOubrwXJKmfCOc0YzLVvK5EuKW-vJlZhZWoXFjMDNqgUevoKVNlN7glzD6cS3HuWYCDXddS7V9Nbg7kXZ0LdXLSbrB_wppm4qhgg-nNgQG2tidPhYE45v_5og1OjELY7QGbDnFeDdgIrbrvziY5SOs7O14tIqdA5XkfkiMv2deQ4HnZ7ATPy31g2St1VnzbsrCoGtlOa5p-SU9u0Z3xvU3N9Y6QPJgv-6Lc_Ym-6s9T6HbGQSBXSpT9MLg"/>
+</div>
+<div class="sm:ml-md mt-sm sm:mt-0 flex flex-col justify-between flex-grow">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Lumina Sprint Pro</h3>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">Size: 42 | Color: Electric Red</p>
+</div>
+<p class="font-headline-md text-headline-md text-primary">$189.00</p>
+</div>
+<div class="flex justify-between items-center mt-lg">
+<div class="flex items-center bg-surface-container-low rounded-lg border border-outline-variant/20 p-1">
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-container-high rounded transition-colors" onclick="updateQty(this, -1)">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</button>
+<input class="w-10 text-center bg-transparent border-none focus:ring-0 font-label-md text-label-md" readonly="" type="text" value="1"/>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-container-high rounded transition-colors" onclick="updateQty(this, 1)">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+<button class="flex items-center space-x-1 text-on-surface-variant hover:text-error transition-colors" onclick="removeItem(this)">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+<span class="font-label-md text-label-md">Remove</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Cart Item 2 -->
+<div class="group flex flex-col sm:flex-row bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-sm shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+<div class="w-full sm:w-40 h-40 bg-surface-container rounded-lg overflow-hidden flex-shrink-0 relative border-[0.5px] border-outline-variant/20">
+<img alt="Minimalist Watch" class="w-full h-full object-cover" data-alt="A luxurious lifestyle photograph of a minimalist matte white smartwatch on a clean surface. The composition is airy and uses generous whitespace. Soft ambient light creates subtle shadows that define the watch's elegant curves. The color palette is dominated by whites and soft greys with a focused, premium feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQCYg_9Qzs7cvyZexYntuunS6vRgiGZNZ8q8De3j02tTwZszmcsPkUDQVo2YR53vlccy8d9zR9HNaUWj4fiB_D_mg6rPa9zfYfUIfil3Q2xJOSxLR53ZVamza4Hxe1N3oS4Na7H6cueoA8Kv5aqfXctA9SlcUmxBG45tPxeQkNPyYrEh2Ab07izJNEZaRq98ztQOS5A14gK5Cnqvf1ry98ml0cIo6v3uZUH1mGEyWfiSqTsHj_0JnAQOfvGJORsLnKyP_mfDUfe9ut"/>
+</div>
+<div class="sm:ml-md mt-sm sm:mt-0 flex flex-col justify-between flex-grow">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Minimalist Watch</h3>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">One Size | Color: Polar White</p>
+</div>
+<p class="font-headline-md text-headline-md text-primary">$245.00</p>
+</div>
+<div class="flex justify-between items-center mt-lg">
+<div class="flex items-center bg-surface-container-low rounded-lg border border-outline-variant/20 p-1">
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-container-high rounded transition-colors" onclick="updateQty(this, -1)">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</button>
+<input class="w-10 text-center bg-transparent border-none focus:ring-0 font-label-md text-label-md" readonly="" type="text" value="1"/>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-container-high rounded transition-colors" onclick="updateQty(this, 1)">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+<button class="flex items-center space-x-1 text-on-surface-variant hover:text-error transition-colors" onclick="removeItem(this)">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+<span class="font-label-md text-label-md">Remove</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Continue Shopping -->
+<a class="inline-flex items-center text-primary font-label-md text-label-md mt-md hover:underline decoration-2 underline-offset-4" href="#">
+<span class="material-symbols-outlined mr-2" data-icon="arrow_back">arrow_back</span>
+          Continue Shopping
+        </a>
+</div>
+<!-- Order Summary Sidebar (4 Columns) -->
+<aside class="lg:col-span-4">
+<div class="sticky top-[100px] bg-surface-container-low rounded-xl p-md border border-outline-variant/20 shadow-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-md">Order Summary</h2>
+<div class="space-y-sm mb-lg">
+<div class="flex justify-between">
+<span class="font-body-md text-body-md text-on-surface-variant">Subtotal</span>
+<span class="font-label-md text-label-md text-on-surface">$434.00</span>
+</div>
+<div class="flex justify-between">
+<span class="font-body-md text-body-md text-on-surface-variant">Estimated Shipping</span>
+<span class="font-label-md text-label-md text-on-surface">$12.50</span>
+</div>
+<div class="flex justify-between">
+<span class="font-body-md text-body-md text-on-surface-variant">Tax</span>
+<span class="font-label-md text-label-md text-on-surface">$34.72</span>
+</div>
+<div class="pt-sm border-t border-outline-variant/30 flex justify-between">
+<span class="font-headline-md text-headline-md text-on-surface">Total</span>
+<span class="font-headline-md text-headline-md text-primary">$481.22</span>
+</div>
+</div>
+<div class="space-y-sm">
+<button class="w-full bg-primary text-on-primary py-4 rounded-lg font-label-md text-label-md hover:opacity-90 transition-all duration-300 transform active:scale-[0.98] flex items-center justify-center space-x-2">
+<span>Proceed to Checkout</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<p class="text-center font-label-sm text-label-sm text-on-surface-variant mt-sm">
+<span class="material-symbols-outlined align-middle mr-1 text-[16px]" data-icon="lock">lock</span>
+              Secure SSL Encrypted Checkout
+            </p>
+</div>
+<!-- Promo Code -->
+<div class="mt-lg pt-lg border-t border-outline-variant/30">
+<label class="font-label-md text-label-md text-on-surface-variant mb-2 block">Promo Code</label>
+<div class="flex space-x-xs">
+<input class="flex-grow bg-surface-container-lowest border border-outline-variant rounded-lg px-sm py-2 focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Enter code" type="text"/>
+<button class="bg-secondary-container text-on-secondary-container px-md py-2 rounded-lg font-label-md text-label-md hover:bg-secondary-fixed transition-colors">Apply</button>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer Section -->
+<footer class="w-full mt-lg bg-surface-container-lowest dark:bg-inverse-surface">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-[1280px] mx-auto px-margin-desktop py-xl">
+<div class="col-span-1 md:col-span-1">
+<h3 class="font-headline-lg text-headline-lg font-black text-primary mb-sm">Lumina</h3>
+<p class="font-body-md text-body-md text-secondary">Effortless premium essentials for the modern lifestyle.</p>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary mb-md">Customer Service</h4>
+<ul class="space-y-2">
+<li><a class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors" href="#">Contact Us</a></li>
+<li><a class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors" href="#">Shipping Policy</a></li>
+<li><a class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors" href="#">Returns</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary mb-md">Information</h4>
+<ul class="space-y-2">
+<li><a class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors" href="#">About Us</a></li>
+<li><a class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary mb-md">Newsletter</h4>
+<div class="flex mt-sm">
+<input class="bg-surface-variant border-none rounded-l-lg px-sm py-2 w-full focus:ring-1 focus:ring-primary outline-none" placeholder="email@example.com" type="email"/>
+<button class="bg-primary text-on-primary px-md py-2 rounded-r-lg font-label-md text-label-md">Join</button>
+</div>
+</div>
+</div>
+<div class="max-w-[1280px] mx-auto px-margin-desktop py-md border-t border-outline-variant/10">
+<p class="text-center font-label-sm text-label-sm text-secondary">© 2024 Lumina Shop. Powered by Microweber CMS.</p>
+</div>
+</footer>
+<script>
+    function updateQty(btn, change) {
+      const input = btn.parentElement.querySelector('input');
+      let val = parseInt(input.value);
+      val = isNaN(val) ? 1 : val + change;
+      if (val < 1) val = 1;
+      input.value = val;
+      
+      // Visual feedback
+      btn.classList.add('bg-primary-fixed');
+      setTimeout(() => btn.classList.remove('bg-primary-fixed'), 200);
+    }
+
+    function removeItem(btn) {
+      const item = btn.closest('.group');
+      item.style.opacity = '0';
+      item.style.transform = 'translateX(20px)';
+      setTimeout(() => {
+        item.remove();
+        // Here you would normally update the subtotal/totals
+      }, 300);
+    }
+
+    // Micro-interaction for checkout button
+    const checkoutBtn = document.querySelector('button.bg-primary');
+    if(checkoutBtn) {
+      checkoutBtn.addEventListener('mouseenter', () => {
+        checkoutBtn.querySelector('.material-symbols-outlined').style.transform = 'translateX(4px)';
+        checkoutBtn.querySelector('.material-symbols-outlined').style.transition = 'transform 0.3s ease';
+      });
+      checkoutBtn.addEventListener('mouseleave', () => {
+        checkoutBtn.querySelector('.material-symbols-outlined').style.transform = 'translateX(0)';
+      });
+    }
+  </script>
+</body></html>
